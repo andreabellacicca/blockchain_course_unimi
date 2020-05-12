@@ -14,6 +14,7 @@ contract faucetadvance {
      modifier onlyOwner {
             require(msg.sender == owner);
              _;
+     }
     mapping(address => uint256) internal balance;
     uint256 private max_withdraw = 100000000000000000;
 
