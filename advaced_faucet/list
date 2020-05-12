@@ -2,9 +2,10 @@ Smart Contract
 
 Tommaso Armadillo 	0xCe58D18Dbac35F72BCd0b4C9d9132b7b25C888F7
 Alessandro Tammaro	0xCd6F583212f6eF3197965A87BFf6ca7d22fb4B63
-Chiara Mancuso		0x26B78486164c1c056294a6a9b89a9d9955Db452B
-Marco Beretta		0x7723dEf957e37d71329B60D971356A0958Ab8D67
-Simone Pirota		0x3ae7EA0D88949dBE9e941e55B70150aC71cb6e1f
+Chiara Mancuso		  0x26B78486164c1c056294a6a9b89a9d9955Db452B
+Marco Beretta		    0x7723dEf957e37d71329B60D971356A0958Ab8D67
+Simone Pirota		    0x3ae7EA0D88949dBE9e941e55B70150aC71cb6e1f
+Andrea Rossoni      0xeae8B4579c6a959996C78d6779668467456EE53e
 
 
 Indirizzi
@@ -17,4 +18,3 @@ Indirizzi
  {'name': 'Simone Pirota', 'address': '0x743491ab1511287491af8De4Ca25b2fbc707eB88'},
  {'name': 'Sofia Cella', 'address': '0xc6E53222274D5Ffd0Cf3d8933a556f46d3D2e420'},
  {'name': 'Andrea Rossoni', 'address': '0xA0b0c2A3B7AD77F9cAea004b4985419a19630a90'}]
-
