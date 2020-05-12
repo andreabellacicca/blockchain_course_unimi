@@ -9,10 +9,11 @@ contract FaucetAdv{
     event Refilled(address indexed owner, address indexed recipient, uint256 amount);
     event Withdraw(address indexed recipient, uint256 amount);
 
-  function ricaricaSmartC(address account, uint256 paySM) payable public {
-    require(msg.sender != owner, 'Errore account');
+  function refill(address account) payable external {
+    require(msg.sender != owner, 'Only the owner can refill');
 
    balance[account]= balance[account] + msg.value;
+   emit Refilled(msg.sender, account, msg.value);
 } //Solo io posso ricaricare lo smart contract
 
 
@@ -21,11 +22,12 @@ contract FaucetAdv{
     }
 
 
-  function withdraw(uint withdraw_amount)public{
+  function withdraw(uint withdraw_amount)external{
     require(withdraw_amount<= 100000000000000000);
     require (balance[msg.sender]>= withdraw_amount, "Non hai abbastanza soldi per ritirare!");
     balance[msg.sender] = balance[msg.sender] - withdraw_amount;
     msg.sender.transfer(withdraw_amount);
+    emit Withdraw(msg.sender, withdraw_amount);
     }
 
 }
