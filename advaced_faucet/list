@@ -17,4 +17,5 @@ Indirizzi
  {'name': 'Chiara Mancuso', 'address': '0x8B64A443580c65a891355D67B8B1C139ec915CF6'},
  {'name': 'Simone Pirota', 'address': '0x743491ab1511287491af8De4Ca25b2fbc707eB88'},
  {'name': 'Sofia Cella', 'address': '0xc6E53222274D5Ffd0Cf3d8933a556f46d3D2e420'},
- {'name': 'Andrea Rossoni', 'address': '0xA0b0c2A3B7AD77F9cAea004b4985419a19630a90'}]
+ {'name': 'Andrea Rossoni', 'address': '0xA0b0c2A3B7AD77F9cAea004b4985419a19630a90'},
+ {'name': 'Marco Beretta', 'address': '0xfb74C9012A57B0E1dB837b624080b3CbCd3Bb248'}]
