@@ -40,6 +40,9 @@ contract faucetadvance {
         return balance[account];
     }
 
+    function () external payable {}
+
+
 }
 
 
