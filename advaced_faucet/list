@@ -4,7 +4,7 @@ Tommaso Armadillo 	0xCe58D18Dbac35F72BCd0b4C9d9132b7b25C888F7
 Alessandro Tammaro	0xCd6F583212f6eF3197965A87BFf6ca7d22fb4B63
 Chiara Mancuso		0xc873ca8dBBa832BA7f3eF9fbD238A7c7c09db6a7
 Marco Beretta		0x7723dEf957e37d71329B60D971356A0958Ab8D67
-Simone Pirota		0x3ae7EA0D88949dBE9e941e55B70150aC71cb6e1f
+Simone Pirota		0xfb8CAAD8fffB13c3584480952E3dAeBcBca20172
 Andrea Rossoni      	0xeae8B4579c6a959996C78d6779668467456EE53e
 Francesco Marcolli	0x934288cf57446bD7638673c6812579AD71bf8deF
 Sofia Cella		0xaeBe787d23bb02E66893A02b7C6b2Af6d8218955
@@ -20,3 +20,4 @@ Indirizzi
  {'name': 'Sofia Cella', 'address': '0xc6E53222274D5Ffd0Cf3d8933a556f46d3D2e420'},
  {'name': 'Andrea Rossoni', 'address': '0xA0b0c2A3B7AD77F9cAea004b4985419a19630a90'},
  {'name': 'Marco Beretta', 'address': '0xfb74C9012A57B0E1dB837b624080b3CbCd3Bb248'}]
+
