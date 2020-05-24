@@ -1,0 +1,833 @@
+[
+    {
+        'anonymous': False,
+        'inputs': [
+            {
+                'indexed': True,
+                'internalType': "address",
+                'name': "account",
+                'type': "address"
+            }
+        ],
+        'name': "AdminSetterAdded",
+        'type': "event"
+    },
+    {
+        'anonymous': False,
+        'inputs': [
+            {
+                'indexed': True,
+                'internalType': "address",
+                'name': "account",
+                'type': "address"
+            }
+        ],
+        'name': "AdminSetterRemoved",
+        'type': "event"
+    },
+    {
+        'anonymous': False,
+        'inputs': [
+            {
+                'indexed': True,
+                'internalType': "address",
+                'name': "owner",
+                'type': "address"
+            },
+            {
+                'indexed': True,
+                'internalType': "address",
+                'name': "spender",
+                'type': "address"
+            },
+            {
+                'indexed': False,
+                'internalType': "uint256",
+                'name': "value",
+                'type': "uint256"
+            }
+        ],
+        'name': "Approval",
+        'type': "event"
+    },
+    {
+        'anonymous': False,
+        'inputs': [
+            {
+                'indexed': True,
+                'internalType': "address",
+                'name': "account",
+                'type': "address"
+            }
+        ],
+        'name': "BurnerAdded",
+        'type': "event"
+    },
+    {
+        'anonymous': False,
+        'inputs': [
+            {
+                'indexed': True,
+                'internalType': "address",
+                'name': "account",
+                'type': "address"
+            }
+        ],
+        'name': "BurnerRemoved",
+        'type': "event"
+    },
+    {
+        'anonymous': False,
+        'inputs': [
+            {
+                'indexed': True,
+                'internalType': "address",
+                'name': "account",
+                'type': "address"
+            }
+        ],
+        'name': "MinterAdded",
+        'type': "event"
+    },
+    {
+        'anonymous': False,
+        'inputs': [
+            {
+                'indexed': True,
+                'internalType': "address",
+                'name': "account",
+                'type': "address"
+            }
+        ],
+        'name': "MinterRemoved",
+        'type': "event"
+    },
+    {
+        'anonymous': False,
+        'inputs': [
+            {
+                'indexed': True,
+                'internalType': "address",
+                'name': "account",
+                'type': "address"
+            }
+        ],
+        'name': "PriceMakerAdded",
+        'type': "event"
+    },
+    {
+        'anonymous': False,
+        'inputs': [
+            {
+                'indexed': True,
+                'internalType': "address",
+                'name': "account",
+                'type': "address"
+            }
+        ],
+        'name': "PriceMakerRemoved",
+        'type': "event"
+    },
+    {
+        'anonymous': False,
+        'inputs': [
+            {
+                'indexed': True,
+                'internalType': "address",
+                'name': "account",
+                'type': "address"
+            },
+            {
+                'indexed': True,
+                'internalType': "uint256",
+                'name': "nToken",
+                'type': "uint256"
+            }
+        ],
+        'name': "Transaction",
+        'type': "event"
+    },
+    {
+        'anonymous': False,
+        'inputs': [
+            {
+                'indexed': True,
+                'internalType': "address",
+                'name': "from",
+                'type': "address"
+            },
+            {
+                'indexed': True,
+                'internalType': "address",
+                'name': "to",
+                'type': "address"
+            },
+            {
+                'indexed': False,
+                'internalType': "uint256",
+                'name': "value",
+                'type': "uint256"
+            }
+        ],
+        'name': "Transfer",
+        'type': "event"
+    },
+    {
+        'constant': True,
+        'inputs': [],
+        'name': "PriceTkn",
+        'outputs': [
+            {
+                'internalType': "uint256",
+                'name': "",
+                'type': "uint256"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "view",
+        'type': "function"
+    },
+    {
+        'constant': False,
+        'inputs': [
+            {
+                'internalType': "address",
+                'name': "admin",
+                'type': "address"
+            }
+        ],
+        'name': "SetAdminAddress",
+        'outputs': [],
+        'payable': False,
+        'stateMutability': "nonpayable",
+        'type': "function"
+    },
+    {
+        'constant': False,
+        'inputs': [
+            {
+                'internalType': "uint256",
+                'name': "value",
+                'type': "uint256"
+            }
+        ],
+        'name': "SetPriceTkn",
+        'outputs': [],
+        'payable': False,
+        'stateMutability': "nonpayable",
+        'type': "function"
+    },
+    {
+        'constant': False,
+        'inputs': [
+            {
+                'internalType': "address",
+                'name': "account",
+                'type': "address"
+            }
+        ],
+        'name': "addAdminSetter",
+        'outputs': [],
+        'payable': False,
+        'stateMutability': "nonpayable",
+        'type': "function"
+    },
+    {
+        'constant': False,
+        'inputs': [
+            {
+                'internalType': "address",
+                'name': "account",
+                'type': "address"
+            }
+        ],
+        'name': "addBurner",
+        'outputs': [],
+        'payable': False,
+        'stateMutability': "nonpayable",
+        'type': "function"
+    },
+    {
+        'constant': False,
+        'inputs': [
+            {
+                'internalType': "address",
+                'name': "account",
+                'type': "address"
+            }
+        ],
+        'name': "addMinter",
+        'outputs': [],
+        'payable': False,
+        'stateMutability': "nonpayable",
+        'type': "function"
+    },
+    {
+        'constant': False,
+        'inputs': [
+            {
+                'internalType': "address",
+                'name': "account",
+                'type': "address"
+            }
+        ],
+        'name': "addPriceMaker",
+        'outputs': [],
+        'payable': False,
+        'stateMutability': "nonpayable",
+        'type': "function"
+    },
+    {
+        'constant': True,
+        'inputs': [
+            {
+                'internalType': "address",
+                'name': "owner",
+                'type': "address"
+            },
+            {
+                'internalType': "address",
+                'name': "spender",
+                'type': "address"
+            }
+        ],
+        'name': "allowance",
+        'outputs': [
+            {
+                'internalType': "uint256",
+                'name': "",
+                'type': "uint256"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "view",
+        'type': "function"
+    },
+    {
+        'constant': False,
+        'inputs': [
+            {
+                'internalType': "address",
+                'name': "spender",
+                'type': "address"
+            },
+            {
+                'internalType': "uint256",
+                'name': "amount",
+                'type': "uint256"
+            }
+        ],
+        'name': "approve",
+        'outputs': [
+            {
+                'internalType': "bool",
+                'name': "",
+                'type': "bool"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "nonpayable",
+        'type': "function"
+    },
+    {
+        'constant': True,
+        'inputs': [
+            {
+                'internalType': "address",
+                'name': "account",
+                'type': "address"
+            }
+        ],
+        'name': "balanceOf",
+        'outputs': [
+            {
+                'internalType': "uint256",
+                'name': "",
+                'type': "uint256"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "view",
+        'type': "function"
+    },
+    {
+        'constant': False,
+        'inputs': [
+            {
+                'internalType': "uint256",
+                'name': "amount",
+                'type': "uint256"
+            }
+        ],
+        'name': "burn",
+        'outputs': [],
+        'payable': False,
+        'stateMutability': "nonpayable",
+        'type': "function"
+    },
+    {
+        'constant': False,
+        'inputs': [
+            {
+                'internalType': "address",
+                'name': "account",
+                'type': "address"
+            },
+            {
+                'internalType': "uint256",
+                'name': "amount",
+                'type': "uint256"
+            }
+        ],
+        'name': "burnFrom",
+        'outputs': [],
+        'payable': False,
+        'stateMutability': "nonpayable",
+        'type': "function"
+    },
+    {
+        'constant': False,
+        'inputs': [
+            {
+                'internalType': "uint256",
+                'name': "amount",
+                'type': "uint256"
+            }
+        ],
+        'name': "buyTkns",
+        'outputs': [],
+        'payable': True,
+        'stateMutability': "payable",
+        'type': "function"
+    },
+    {
+        'constant': False,
+        'inputs': [],
+        'name': "buyTkns",
+        'outputs': [],
+        'payable': True,
+        'stateMutability': "payable",
+        'type': "function"
+    },
+    {
+        'constant': True,
+        'inputs': [],
+        'name': "decimals",
+        'outputs': [
+            {
+                'internalType': "uint8",
+                'name': "",
+                'type': "uint8"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "view",
+        'type': "function"
+    },
+    {
+        'constant': False,
+        'inputs': [
+            {
+                'internalType': "address",
+                'name': "spender",
+                'type': "address"
+            },
+            {
+                'internalType': "uint256",
+                'name': "subtractedValue",
+                'type': "uint256"
+            }
+        ],
+        'name': "decreaseAllowance",
+        'outputs': [
+            {
+                'internalType': "bool",
+                'name': "",
+                'type': "bool"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "nonpayable",
+        'type': "function"
+    },
+    {
+        'constant': True,
+        'inputs': [
+            {
+                'internalType': "uint256",
+                'name': "amount",
+                'type': "uint256"
+            }
+        ],
+        'name': "getFee",
+        'outputs': [
+            {
+                'internalType': "uint256",
+                'name': "",
+                'type': "uint256"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "view",
+        'type': "function"
+    },
+    {
+        'constant': False,
+        'inputs': [
+            {
+                'internalType': "address",
+                'name': "spender",
+                'type': "address"
+            },
+            {
+                'internalType': "uint256",
+                'name': "addedValue",
+                'type': "uint256"
+            }
+        ],
+        'name': "increaseAllowance",
+        'outputs': [
+            {
+                'internalType': "bool",
+                'name': "",
+                'type': "bool"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "nonpayable",
+        'type': "function"
+    },
+    {
+        'constant': False,
+        'inputs': [
+            {
+                'internalType': "address",
+                'name': "addrContract",
+                'type': "address"
+            },
+            {
+                'internalType': "uint256",
+                'name': "_priceTkn",
+                'type': "uint256"
+            },
+            {
+                'internalType': "uint256",
+                'name': "initSupply",
+                'type': "uint256"
+            }
+        ],
+        'name': "initContract",
+        'outputs': [],
+        'payable': False,
+        'stateMutability': "nonpayable",
+        'type': "function"
+    },
+    {
+        'constant': True,
+        'inputs': [
+            {
+                'internalType': "address",
+                'name': "account",
+                'type': "address"
+            }
+        ],
+        'name': "isAdminSetter",
+        'outputs': [
+            {
+                'internalType': "bool",
+                'name': "",
+                'type': "bool"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "view",
+        'type': "function"
+    },
+    {
+        'constant': True,
+        'inputs': [
+            {
+                'internalType': "address",
+                'name': "account",
+                'type': "address"
+            }
+        ],
+        'name': "isBurner",
+        'outputs': [
+            {
+                'internalType': "bool",
+                'name': "",
+                'type': "bool"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "view",
+        'type': "function"
+    },
+    {
+        'constant': True,
+        'inputs': [
+            {
+                'internalType': "address",
+                'name': "account",
+                'type': "address"
+            }
+        ],
+        'name': "isMinter",
+        'outputs': [
+            {
+                'internalType': "bool",
+                'name': "",
+                'type': "bool"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "view",
+        'type': "function"
+    },
+    {
+        'constant': True,
+        'inputs': [
+            {
+                'internalType': "address",
+                'name': "account",
+                'type': "address"
+            }
+        ],
+        'name': "isPriceMaker",
+        'outputs': [
+            {
+                'internalType': "bool",
+                'name': "",
+                'type': "bool"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "view",
+        'type': "function"
+    },
+    {
+        'constant': False,
+        'inputs': [
+            {
+                'internalType': "address",
+                'name': "account",
+                'type': "address"
+            },
+            {
+                'internalType': "uint256",
+                'name': "amount",
+                'type': "uint256"
+            }
+        ],
+        'name': "mint",
+        'outputs': [
+            {
+                'internalType': "bool",
+                'name': "",
+                'type': "bool"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "nonpayable",
+        'type': "function"
+    },
+    {
+        'constant': True,
+        'inputs': [],
+        'name': "name",
+        'outputs': [
+            {
+                'internalType': "string",
+                'name': "",
+                'type': "string"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "view",
+        'type': "function"
+    },
+    {
+        'constant': True,
+        'inputs': [],
+        'name': "priceTkn",
+        'outputs': [
+            {
+                'internalType': "uint256",
+                'name': "",
+                'type': "uint256"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "view",
+        'type': "function"
+    },
+    {
+        'constant': False,
+        'inputs': [],
+        'name': "renounceAdminSetter",
+        'outputs': [],
+        'payable': False,
+        'stateMutability': "nonpayable",
+        'type': "function"
+    },
+    {
+        'constant': False,
+        'inputs': [],
+        'name': "renounceBurner",
+        'outputs': [],
+        'payable': False,
+        'stateMutability': "nonpayable",
+        'type': "function"
+    },
+    {
+        'constant': False,
+        'inputs': [],
+        'name': "renounceMinter",
+        'outputs': [],
+        'payable': False,
+        'stateMutability': "nonpayable",
+        'type': "function"
+    },
+    {
+        'constant': False,
+        'inputs': [],
+        'name': "renouncePriceMaker",
+        'outputs': [],
+        'payable': False,
+        'stateMutability': "nonpayable",
+        'type': "function"
+    },
+    {
+        'constant': True,
+        'inputs': [],
+        'name': "symbol",
+        'outputs': [
+            {
+                'internalType': "string",
+                'name': "",
+                'type': "string"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "view",
+        'type': "function"
+    },
+    {
+        'constant': True,
+        'inputs': [],
+        'name': "timeLimit",
+        'outputs': [
+            {
+                'internalType': "uint256",
+                'name': "",
+                'type': "uint256"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "view",
+        'type': "function"
+    },
+    {
+        'constant': True,
+        'inputs': [],
+        'name': "tokenContract",
+        'outputs': [
+            {
+                'internalType': "address",
+                'name': "",
+                'type': "address"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "view",
+        'type': "function"
+    },
+    {
+        'constant': True,
+        'inputs': [],
+        'name': "totSupply",
+        'outputs': [
+            {
+                'internalType': "uint256",
+                'name': "",
+                'type': "uint256"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "view",
+        'type': "function"
+    },
+    {
+        'constant': True,
+        'inputs': [],
+        'name': "totalSupply",
+        'outputs': [
+            {
+                'internalType': "uint256",
+                'name': "",
+                'type': "uint256"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "view",
+        'type': "function"
+    },
+    {
+        'constant': False,
+        'inputs': [
+            {
+                'internalType': "address",
+                'name': "recipient",
+                'type': "address"
+            },
+            {
+                'internalType': "uint256",
+                'name': "amount",
+                'type': "uint256"
+            }
+        ],
+        'name': "transfer",
+        'outputs': [
+            {
+                'internalType': "bool",
+                'name': "",
+                'type': "bool"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "nonpayable",
+        'type': "function"
+    },
+    {
+        'constant': False,
+        'inputs': [
+            {
+                'internalType': "address",
+                'name': "sender",
+                'type': "address"
+            },
+            {
+                'internalType': "address",
+                'name': "recipient",
+                'type': "address"
+            },
+            {
+                'internalType': "uint256",
+                'name': "amount",
+                'type': "uint256"
+            }
+        ],
+        'name': "transferFrom",
+        'outputs': [
+            {
+                'internalType': "bool",
+                'name': "",
+                'type': "bool"
+            }
+        ],
+        'payable': False,
+        'stateMutability': "nonpayable",
+        'type': "function"
+    }
+]
