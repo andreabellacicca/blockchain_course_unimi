@@ -35,7 +35,7 @@ Indirizzo PayCoin: 0x07630d8D0a4B1143dce2A5B7F788494C3ec73E05
 Indirizzo Lender: 0x74d42F052a962dD4cf1D294e5e64BE8F3B662940
 
 
-Team 3
+Team FSS
 
 
 Indirizzo Trading:
@@ -45,3 +45,7 @@ Indirizzo Exchange:
 Indirizzo Token:
 
 Indirizzo Challenge:
+
+Indirizzo PayCoin: 0x0a3F5c902eBa5AaCf86bA0723B55F4Bbc661213F
+
+Indirizzo Lender: 0xc66b6c5233cFad5a3d4eEbD43ec3E8A98ea97C50
