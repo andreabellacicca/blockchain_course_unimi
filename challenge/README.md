@@ -52,6 +52,6 @@ Indirizzo Token:
 
 Indirizzo Challenge:
 
-Indirizzo PayCoin: 0x0a3F5c902eBa5AaCf86bA0723B55F4Bbc661213F
+Indirizzo PayCoin: 0xac0Af09FE40Fbb6f51C82450b01B86aC0BCd935A
 
-Indirizzo Lender: 0xc66b6c5233cFad5a3d4eEbD43ec3E8A98ea97C50
+Indirizzo Lender: 0x8bfBc868dE957a4B0e835fc00F95c98A0D77DD5a
