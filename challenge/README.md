@@ -19,6 +19,12 @@ Indirizzo Token;
 
 Indirizzo Challenge:
 
+Indirizzo PayCoin:
+'0xec76e73fEFB9204f2Ad77FDcfDF833f971bCc5DE'
+
+Indirizzo Lender:
+'0x188E8e7Ba8Ac318D248De102a2cD83d96A40387F'
+
 
 Team CST
 
