@@ -38,7 +38,7 @@ Indirizzo Lender: 0x74d42F052a962dD4cf1D294e5e64BE8F3B662940
 Team FSS
 
 
-Indirizzo Trading:
+Indirizzo Trading: 0x85A8d7241Ffffee7290501473A9B11BFdA2Ae9Ff
 
 Indirizzo Exchange:
 
