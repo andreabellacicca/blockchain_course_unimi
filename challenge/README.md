@@ -24,7 +24,7 @@ Team CST
 
 Indirizzo Trading: 0xe6a2234764Bd7a41Da73bd91F9E857819d20b22F
 
-Indirizzo Exchange: 0x34de80C909587c3FbE730426FeC8221f645Bb0c9
+Indirizzo Exchange: 
 
 Indirizzo Token: 0xb5da18960c9B44849b27E32393673A6501d5B7dE
 
