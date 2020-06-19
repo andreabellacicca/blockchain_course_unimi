@@ -3,7 +3,7 @@ Inizio Challenge: 24/06/2020 09:00:00
 Fine Challenge: 30/06/2020 18:00:00
 
 
-Indirizzo PayCoin: 
+Indirizzo PayCoin:
 
 Indirizzo Lender:
 
@@ -11,7 +11,7 @@ Indirizzo Lender:
 
 Team AA
 
-Indirizzo Trading:
+Indirizzo Trading: '0xe5e619C1cE24A3c5083D6c30FAD80Dbe4D8FFd39'
 
 Indirizzo Exchange:
 
@@ -24,7 +24,7 @@ Team CST
 
 Indirizzo Trading: 0xe6a2234764Bd7a41Da73bd91F9E857819d20b22F
 
-Indirizzo Exchange: 0xD21aB033703F68b79A7850DDA1060d592c49f7ce (temporaneo per prova) 
+Indirizzo Exchange: 0xD21aB033703F68b79A7850DDA1060d592c49f7ce (temporaneo per prova)
 
 Indirizzo Token: 0xb5da18960c9B44849b27E32393673A6501d5B7dE
 
