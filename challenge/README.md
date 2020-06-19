@@ -20,15 +20,15 @@ Indirizzo Token;
 Indirizzo Challenge:
 
 
-Team 2
+Team CST
 
-Indirizzo Trading:
+Indirizzo Trading: 0xe6a2234764Bd7a41Da73bd91F9E857819d20b22F
 
-Indirizzo Exchange:
+Indirizzo Exchange: 0x34de80C909587c3FbE730426FeC8221f645Bb0c9
 
-Indirizzo Token:
+Indirizzo Token: 0xb5da18960c9B44849b27E32393673A6501d5B7dE
 
-Indirizzo Challenge:
+Indirizzo Challenge: 0xFBAa4B5d08aF2502A84546C2fCef8ba7f023253c
 
 
 Team 3
