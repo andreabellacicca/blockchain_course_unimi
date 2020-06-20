@@ -18,8 +18,8 @@ contract Lender {
       mapping (address => uint256) fund;                    // fund[address] = totalLoanAssociatedToAddress
 
       // Events
-      event OpenLoan(address indexed who, uint256 indexed amount);
-      event CloseLoan(address indexed who);
+      event OpenLoan(address indexed who, uint256 indexed amount, uint256 indexed id);
+      event CloseLoan(address indexed who, uint256 indexed id);
 
       // Constructor
       constructor (address PayCoinAddress) public {
@@ -34,10 +34,10 @@ contract Lender {
             _activeLoan[_id_loan] = true;
             _nBlock[_id_loan] = block.number;
             creator[_id_loan] = msg.sender;
-            _id_loan = _id_loan.add(1);
             PayCoin(_PayCoinAddress).mint(msg.sender, _amount);
-            emit OpenLoan(msg.sender, _amount);
-            return _id_loan-1;
+            emit OpenLoan(msg.sender, _amount, _id_loan);
+            _id_loan = _id_loan.add(1);
+	    return _id_loan.sub(1);
       }
 
       function closeLoan(uint256 id_loan) external{
@@ -50,7 +50,7 @@ contract Lender {
             fee_to_pay = fee_to_pay.mul(groupBlocks);                                     //Add 0.1% for every block of 500 blocks
             uint256 total = loan[id_loan].add(fee_to_pay);
             PayCoin(_PayCoinAddress).burnFrom(msg.sender, total);
-            emit CloseLoan(msg.sender);
+            emit CloseLoan(msg.sender, id_loan);
       }
 
       function loanStatus(uint256 id_loan) view external returns(uint256, uint256){

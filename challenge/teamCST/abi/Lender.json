@@ -97,6 +97,11 @@
 				"indexed":true,
 				"name":"amount",
 				"type":"uint256"
+			},
+			{
+				"indexed":true,
+				"name":"id",
+				"type":"uint256"
 			}
 		],
 		"name":"OpenLoan",
@@ -109,6 +114,11 @@
 				"indexed":true,
 				"name":"who",
 				"type":"address"
+			},
+			{
+				"indexed":true,
+				"name":"id",
+				"type":"uint256"
 			}
 		],
 		"name":"CloseLoan",
