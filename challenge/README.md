@@ -46,12 +46,12 @@ Team FSS
 
 Indirizzo Trading: 0x85A8d7241Ffffee7290501473A9B11BFdA2Ae9Ff
 
-Indirizzo Exchange:
+Indirizzo Exchange: 0xA0E802c3582C59bdD1050E3a38b4D2eaCa2F7790
 
-Indirizzo Token:
+Indirizzo Token: exchange.token()
 
-Indirizzo Challenge:
+Indirizzo Challenge: 0x8642108C3f69F934bFba5b585D86497833714020
 
-Indirizzo PayCoin: 0xac0Af09FE40Fbb6f51C82450b01B86aC0BCd935A
+Indirizzo PayCoin: exchange.payCoin()
 
-Indirizzo Lender: 0x8bfBc868dE957a4B0e835fc00F95c98A0D77DD5a
+Indirizzo Lender: 0xb634765c33e1e8C942C767B242A114Fa882F76A0
