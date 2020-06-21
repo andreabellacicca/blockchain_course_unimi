@@ -28,11 +28,13 @@ contract Challenge is TeamRole {
     mapping (uint256 => bool) _challengeOpenDirect;         // Is the challenge still open?
     mapping (uint256 => uint256) _timeStartDirect;          // When the challenge started?
     mapping (uint256 => address) _challengedDirect;         // Who has been challenged?
+    mapping (uint256 => address) _challengerDirect;         // Who sent the challenge?
 
     // Variables Team Challenge
     mapping (uint256 => bool) _flagStoricTeam;
     mapping (uint256 => bool) _challengeOpenTeam;
     mapping (uint256 => uint256) _timeStartTeam;
+    mapping (uint256 => address) _challengerTeam;         // Who sent the challenge?
 
     // Events
     event Registered(address indexed teamAddress);
@@ -79,7 +81,7 @@ contract Challenge is TeamRole {
     }
 
     // Utility Functions
-    function MPayCoinAddress (address PayCoinAddress) external isTeam{
+    function setPayCoinAddress (address PayCoinAddress) external isTeam{
         _PayCoinAddress = PayCoinAddress;
     }
 
@@ -126,19 +128,20 @@ contract Challenge is TeamRole {
 	}
 
     // Direct Challenge Functions
-    function challengeStart(address challenged, uint256 flag) external isTeam{
+    function challengeStart(address challenged, uint256 flag) external isTeamRegistered{
         require(_flagStoricDirect[flag] == false, "Flag already used");
         require(challenged != msg.sender, "You cannot challenge your own team!");
         _flagStoricDirect[flag] = true;
         _challengeOpenDirect[flag] = true;
         _timeStartDirect[flag] = block.timestamp;
         _challengedDirect[flag] = challenged;
+        _challengerDirect[flag] = msg.sender;
         PayCoin(_PayCoinAddress).burnFrom(msg.sender, 50e18);
         emit DirectChallenge(msg.sender, challenged, flag);
     }
 
     function winDirectChallenge(uint256 flag) external isTeamRegistered returns(bool){
-        require(_challengedDirect[flag] == msg.sender || msg.sender == _OurTeamAddress, 'You have not been challenged');
+        require(_challengedDirect[flag] == msg.sender || msg.sender == _challengerDirect[flag], 'You are not supposed to parteciate!');
         PayCoin(_PayCoinAddress).burnFrom(msg.sender, 50e18);
         if(_timeStartDirect[flag] + 5 minutes > block.timestamp){
             return false;
@@ -156,6 +159,7 @@ contract Challenge is TeamRole {
         _flagStoricTeam[flag] = true;
         _timeStartTeam[flag] = block.timestamp;
         _challengeOpenTeam[flag] = true;
+        _challengerTeam[flag] = msg.sender;
         PayCoin(_PayCoinAddress).burnFrom(msg.sender, 100e18);
         emit TeamChallenge(msg.sender, flag);
     }

@@ -17,7 +17,7 @@ contract Exchange is TeamRole {
     uint256[] prices;
     uint _open;
     uint _end;
-    uint count = 0; // Counter for addPrice 
+    uint count = 0; // Counter for addPrice
 
     // Events
     event Buy(address indexed buyer, uint256 indexed amount, uint256 indexed price);
@@ -40,7 +40,7 @@ contract Exchange is TeamRole {
 
     // Input: _amount of OurTkn they want to buy
     // Output: return true if success
-    function buy(uint256 _amount) external isNotTeam isOpen returns(bool) {
+    function buy(uint256 _amount) external isNotTeam isMarketOpen returns(bool) {
         uint256 price;          // Price for 1 OurTkn
         uint256 id;             // Placeholder to read lastPrice()
         uint256 cost;           // Price for _amount our token
@@ -57,7 +57,7 @@ contract Exchange is TeamRole {
 
     // Input: _amount of OurTkn they want to sell
     // Output: return true if success
-    function sell(uint256 _amount) external isNotTeam isOpen returns(bool) {
+    function sell(uint256 _amount) external isNotTeam isMarketOpen returns(bool) {
         uint256 price;          // Price for 1 OurTkn
         uint256 id;             // Placeholder to read lastPrice()
         uint256 cost;           // Price for _amount our token
@@ -72,7 +72,7 @@ contract Exchange is TeamRole {
         return true;
     }
 
-    function getHour() internal returns (uint256){
+    function getHour() internal view returns (uint256){
         uint256 time = block.timestamp;
         time = time.add(2 hours);           // 1 ora per fuso orario e 1 per ora legale
         time = time.mod(1 days);            // Secondi da mezzanotte
@@ -96,7 +96,7 @@ contract Exchange is TeamRole {
     function setOurTknAddress(address OurTokenAddress) external isTeam returns(bool){
         _OurTokenAddress = OurTokenAddress;
     }
-    
+
 	function lastPrice() public view returns (uint256, uint256) {
 		uint256 last_price_id = prices.length;
 		uint256 last_price = prices[last_price_id - 1];
@@ -128,9 +128,9 @@ contract Exchange is TeamRole {
 			_addPrice(new_price);
 			emit PriceChange(msg.sender, new_price, prices.length);
 		}
-		return prices.length;		
+		return prices.length;
 	}
-	
+
     function massiveLoadPrice(uint256 price1, uint256 price2, uint256 price3, uint256 price4, uint256 price5, uint256 price6, uint256 price7, uint256 price8, uint256 price9, uint256 price10) external isTeam {
         _addPrice(price1);
 		emit PriceChange(msg.sender, price1, prices.length);
@@ -154,6 +154,19 @@ contract Exchange is TeamRole {
 		emit PriceChange(msg.sender, price10, prices.length);
     }
 
+    function isOpen() public view returns(bool){
+        if (block.timestamp>_open && block.timestamp<_end){
+            uint256 hour = getHour();
+            if(hour >= 9 && hour<18) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
     // Internal Functions
 	function _addPrice(uint256 new_price) internal returns (bool) {
 		prices.push(new_price);
@@ -161,10 +174,8 @@ contract Exchange is TeamRole {
 	}
 
     // Modifiers
-    modifier isOpen() {
-        require(block.timestamp>_open && block.timestamp<_end, "Market is not open! (Wrong day)"); 
-        uint256 hour = getHour();
-        require(hour >= 9 && hour<18, "Market is not open! (Wrong hour)");
+    modifier isMarketOpen() {
+        require(isOpen(), "Market is not open!");
         _;
     }
 
