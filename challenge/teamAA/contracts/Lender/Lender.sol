@@ -36,8 +36,8 @@ contract Lender is CustomerRole, ManagerRole {
   mapping ( address => uint256) _taken;
 
 
-    event OpenLoan(address indexed who, uint256 indexed amount);
-    event CloseLoan(address indexed who);
+    event OpenLoan(address indexed who, uint256 indexed amount, uint256 indexed id);
+    event CloseLoan(address indexed who, uint256 indexed id);
 
     constructor (IERC20 paycoin) public {
       require(address(paycoin) != address(0), "Challenge: PayCoin is the zero address");
@@ -45,7 +45,7 @@ contract Lender is CustomerRole, ManagerRole {
       _owner = _msgSender();
       _paycoin = paycoin;
       uint256 year = 2020;
-      _end = year.timestampFromDateTime(7, 1, 16, 0, 0);
+      _end = year.timestampFromDateTime(6, 30, 16, 0, 0);
     }
 
     function changeEnd(uint256 end) external onlyManager {
@@ -62,7 +62,7 @@ contract Lender is CustomerRole, ManagerRole {
       _loan[_msgSender()][id]._block = block.number;
 
       _deliverCoins(_msgSender(), amount);
-      emit OpenLoan(_msgSender(), amount);
+      emit OpenLoan(_msgSender(), amount, id);
       return id;
     }
 
@@ -77,7 +77,7 @@ contract Lender is CustomerRole, ManagerRole {
       _burnCoins(_msgSender(), _paycoin.allowance(_msgSender(), address(this)));
       _loan[_msgSender()][id_loan]._open = false;
 
-      emit CloseLoan(_msgSender());
+      emit CloseLoan(_msgSender(), id_loan);
     }
 
     function loanStatus(uint256 id_loan) external view returns (uint256, uint256) {
