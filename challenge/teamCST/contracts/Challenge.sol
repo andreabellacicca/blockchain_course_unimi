@@ -56,7 +56,7 @@ contract Challenge is TeamRole {
         require(_registeredTeams[teamAddress] == false, "Team already registered");
         require(_numberRegisteredTeams < 3, "Too many Teams registered");
         _registeredTeams[teamAddress] = true;
-        _numberRegisteredTeams.add(1);
+        _numberRegisteredTeams = _numberRegisteredTeams.add(1);
         emit Registered(teamAddress);
     }
 
@@ -64,7 +64,7 @@ contract Challenge is TeamRole {
     function remove(address teamAddress) external isTeam{
         require(_registeredTeams[teamAddress] == true, "Team is not registered");
         _registeredTeams[teamAddress] = false;
-        _numberRegisteredTeams = _numberRegisteredTeams - 1;
+        _numberRegisteredTeams = _numberRegisteredTeams.sub(1);
         emit Removed(teamAddress);
     }
 
