@@ -13,6 +13,15 @@ Team AA
 
 Indirizzo Trading: '0xe5e619C1cE24A3c5083D6c30FAD80Dbe4D8FFd39'
 
+Indirizzo super-user: '0xA0b0c2A3B7AD77F9cAea004b4985419a19630a90'
+
+Indirizzo Token: '0xf2254C4DBbDf2eEDE5A827c5E79a1C6542528835'
+
+Indirizzo Exchange: '0x5b349092f8F7A4f033743e064c61FDAea6629Db2' 
+
+Indirizzo Challenge: '0x40DbeAc4192FCF3901c9B42aDEeDD28B15F8961F'
+
+****************************************************************************
 Indirizzo Exchange: '0x0976D665f544CB7180a5d0581e7C6A2098AAec9a' (di test)
 
 Indirizzo Token: '0x3E44D9A0cD140d574434462A620E770cA67c9e82' (di test)
@@ -22,6 +31,7 @@ Indirizzo Challenge: '0xe3d9737348f2Ef46E54a3538Edd3D4FAec9a92bd' (di test)
 Indirizzo PayCoin: '0xec76e73fEFB9204f2Ad77FDcfDF833f971bCc5DE' (di test)
 
 Indirizzo Lender: '0x6963dc864C3cfbFE42c6Fe8303647aCFE8deAE3E' (di test)
+****************************************************************************
 
 
 Team CST
