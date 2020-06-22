@@ -92,6 +92,22 @@
 	{
 		"constant":true,
 		"inputs":[
+
+		],
+		"name":"isOpen",
+		"outputs":[
+			{
+				"name":"",
+				"type":"bool"
+			}
+		],
+		"payable":false,
+		"stateMutability":"view",
+		"type":"function"
+	},
+	{
+		"constant":true,
+		"inputs":[
 			{
 				"name":"account",
 				"type":"address"

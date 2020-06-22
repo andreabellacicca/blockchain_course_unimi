@@ -38,15 +38,26 @@ Team CST
 
 Indirizzo Trading: 0xe6a2234764Bd7a41Da73bd91F9E857819d20b22F
 
-Indirizzo Exchange: 0xCcD93237B92074Fc27FefCAa8C7Df712196C3626
+****************************************************************************
+Indirizzo Exchange: 0x168Fd4d61FA553f30368f39707708291E37999D0
 
-Indirizzo Token: 0x31CC23d52C2fF5B6df6b158c8aEaab76E1AA42f1
+Indirizzo Token:    0x439d085648dBD60C8BCe609382D8E00C5040490C
 
-Indirizzo Challenge: 0x0d3f16B53838cde49B10131bA62F1f504294B62F
+Indirizzo Challenge: 0x70B8FeA881ce662fBBFB9B026B34B33Dcaeeba89 
 
-Indirizzo PayCoin: 0xFBF15fAF47Ce74E0d7714C5b77ACCE8788e4d09a
+Indirizzo PayCoin:  0x1fB8d786ab3d8f7BC0816248c5653B8bA79D2E61
 
-Indirizzo Lender: 0x09005644ed55e4238d381C336371DC0068c7a449
+Indirizzo Lender:   0x4ed98feb60c4265b07B14e20f3ecc7f5dddb7884
+****************************************************************************
+Indirizzo Exchange: 0xCcD93237B92074Fc27FefCAa8C7Df712196C3626      (test)
+
+Indirizzo Token: 0x31CC23d52C2fF5B6df6b158c8aEaab76E1AA42f1         (test)
+
+Indirizzo Challenge: 0x0d3f16B53838cde49B10131bA62F1f504294B62F     (test)
+
+Indirizzo PayCoin: 0xFBF15fAF47Ce74E0d7714C5b77ACCE8788e4d09a       (test)
+
+Indirizzo Lender: 0x09005644ed55e4238d381C336371DC0068c7a449        (test)
 
 
 Team FSS
