@@ -21,6 +21,8 @@ Indirizzo Exchange: '0x5b349092f8F7A4f033743e064c61FDAea6629Db2'
 
 Indirizzo Challenge: '0x40DbeAc4192FCF3901c9B42aDEeDD28B15F8961F'
 
+Indirizzo Lender_backup: '0x3Df98f4816Ec7BbcecBBbEB507E8Af9ce6cd1126'
+
 ****************************************************************************
 Indirizzo Exchange: '0x0976D665f544CB7180a5d0581e7C6A2098AAec9a' (di test)
 
