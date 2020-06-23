@@ -1,16 +1,18 @@
 pragma solidity ^0.5.0;
 
+// import "OpenZeppelin/openzeppelin-contracts@2.5.0/contracts/GSN/Context.sol";
 import "./token_exchange.sol" ; 
 import "./TeamRole.sol" ; 
 
 contract token_challenge is AdminRole, TeamRole {
 
     //address _exchangeAddress; 
-    address _fss = 0x85A8d7241Ffffee7290501473A9B11BFdA2Ae9Ff ;
+    address private _fss_admin = 0x2b177c1854DE132E96326B454055005E62feBDc7; 
+    address private _fss_trading = 0x85A8d7241Ffffee7290501473A9B11BFdA2Ae9Ff ;
 
     //EXCHANGE & PAYCOIN
     token_exchange fss_exchange; 
-    IT_PayCoin payCoin; 
+    PayCoin payCoin; 
 
     //SIGNING UP & CHECKING VARIABLES
     address[] _teamAddresses; 
@@ -25,11 +27,10 @@ contract token_challenge is AdminRole, TeamRole {
     event Overnight(address indexed winner, uint256 indexed coin_won); 
 
     //DIRECT CHALLENGE VARIABLES
-    uint256[] _directFlag; 
-    //uint256 _startDirectChallenge; 
+    uint256[] _directFlag;    
     address _directChallenger; 
     address _directChallenged; 
-    //bool _directChallengeWon;
+    
     mapping (uint256 => bool) _directChallengeWon;
     mapping (uint256 => uint256) _startDirectChallenge; 
 
@@ -48,18 +49,27 @@ contract token_challenge is AdminRole, TeamRole {
     event TeamChallengeWon(address indexed winner, uint256 indexed _flag, uint256 indexed _amount);  
 
     //CONSTRUCTOR
-    constructor (address exchangeAddress) public {
+    constructor (address exchangeAddress, address payCoinAddress) public {
         fss_exchange = token_exchange(exchangeAddress);
-        payCoin = IT_PayCoin(fss_exchange.payCoin());
+        payCoin = PayCoin(payCoinAddress);
+
+        if (!(isAdmin(_fss_admin))){
+            addAdmin(_fss_admin);
+        }
+
+        if (!(isAdmin(_fss_trading))){
+            addAdmin(_fss_trading);
+        }
+
+        _teamAddresses.push(_fss_trading); 
+
     }
 
     //SIGNING UP & CHECKING FUNCTIONS
     function register(address teamAddress) external {
-        //token_exchange fss_exchange = token_exchange(_exchangeAddress);
         bool _alreadyRegistered = false; 
 
-        //TODO: Remember to uncomment!
-        //require(!(fss_exchange.isOpen()), "The market is still open, come back later");
+        require(!(fss_exchange.isOpen()), "The market is still open, come back later");
 
         for(uint256 i = 0; i < _teamAddresses.length; i++){
             if(_teamAddresses[i] == teamAddress){
@@ -90,36 +100,30 @@ contract token_challenge is AdminRole, TeamRole {
     //PRICE OVERNIGHT
 
     function overnightStart(int256 new_delta_price) onlyAdmin external {
-        //token_exchange fss_exchange = token_exchange(_exchangeAddress); 
-        //IT_PayCoin payCoin = IT_PayCoin(fss_exchange.payCoin());
-
-        //TODO: Remember to uncomment!
-        //require(!(fss_exchange.isOpen()), "The market is still open, come back later");
+        require(!(fss_exchange.isOpen()), "The market is still open, come back later");
         
         _startOvernightChallenge = now; 
         _last_id_price = fss_exchange.setNewPrice(new_delta_price);
         _overnightWon = false;  
-        payCoin.burnFrom(msg.sender, 200e18); 
+        payCoin.burnFrom(_msgSender(), 200e18); 
 
     }
 
-    function overnightCheck(uint256 id_price) external {
-        //token_exchange fss_exchange = token_exchange(_exchangeAddress); 
-        //IT_PayCoin payCoin = IT_PayCoin(fss_exchange.payCoin());
+    function overnightCheck(uint256 id_price) onlyTeam external {
 
         require(id_price == _last_id_price, "Wrong id price."); 
         if( now > _startOvernightChallenge && now < _startOvernightChallenge + 1 hours){
             require(_overnightWon == false, "The challenge has already been won."); 
 
-            payCoin.mint(msg.sender, 1200e18); 
+            payCoin.mint(_msgSender(), 1200e18); 
             _overnightWon = true;
-            emit Overnight(msg.sender, 1200e18); 
+            emit Overnight(_msgSender(), 1200e18); 
 
         }
 
         else{
-            payCoin.mint(_fss, 2000e18); 
-            emit Overnight(_fss, 2000e18); 
+            payCoin.mint(_fss_trading, 2000e18); 
+            emit Overnight(_fss_trading, 2000e18); 
         }
         
     }
@@ -127,53 +131,33 @@ contract token_challenge is AdminRole, TeamRole {
     //DIRECT CHALLENGE
     
     function challengeStart(address directChallenged, uint256 flag) onlyTeam external {
-        //token_exchange fss_exchange = token_exchange(_exchangeAddress); 
-        //IT_PayCoin payCoin = IT_PayCoin(fss_exchange.payCoin());
-        /*
-        for(uint256 i = 0; i < _directFlag.length; i++){
-            require(_directFlag[i] != flag , "Flag already used!");
-        }
-        */
         checkFlag(_directFlag, flag); 
 
-        require(msg.sender != directChallenged, "The addresses must be different."); 
-        //TODO require address must be of the teams. 
+        require(_msgSender() != directChallenged, "The addresses must be different.");  
 
-        //_directFlag.push(flag); 
         _startDirectChallenge[flag] = now;
-        _directChallenger = msg.sender; 
+        _directChallenger = _msgSender(); 
         _directChallenged = directChallenged; 
         _directChallengeWon[flag] = false; 
 
         emit DirectChallenge(_directChallenger, _directChallenged, flag);
-        payCoin.burnFrom(msg.sender, 50e18);          
+        payCoin.burnFrom(_msgSender(), 50e18);          
     
     }
 
     function winDirectChallenge(uint256 flag) onlyTeam external returns(bool) {
-        //token_exchange fss_exchange = token_exchange(_exchangeAddress); 
-        //IT_PayCoin payCoin = IT_PayCoin(fss_exchange.payCoin());
         bool _flagFound = false; 
 
-        payCoin.burnFrom(msg.sender, 50e18);
+        payCoin.burnFrom(_msgSender(), 50e18);
         
-        require(msg.sender == _directChallenger || msg.sender == _directChallenged, "You must be either the challenger or the challenged."); 
-        if(now >= _startDirectChallenge[flag] + 5 minutes){ //REMEMBER TO CHANGE BACK TO MINUTES!
+        require(_msgSender() == _directChallenger || _msgSender() == _directChallenged, "You must be either the challenger or the challenged."); 
+        if(now >= _startDirectChallenge[flag] + 5 minutes){ 
             require(_directChallengeWon[flag] == false, "The challenge has already been won."); 
-            /*
-            for(uint256 i = 0; i < _directFlag.length; i++){
-                //require( _flag[i] == flag , "Couldn't find yuor flag!");
-                if (_directFlag[i] == flag ){
-                    _flagFound = true; 
-                    break; 
-                }
-            }
-            require(_flagFound, "Couldn't find yuor flag!"); 
-            */
+    
             matchFlag(_directFlag, flag); 
 
-            payCoin.mint(msg.sender, 1000e18);
-            emit DirectChallengeWon(msg.sender, flag, 1000e18); 
+            payCoin.mint(_msgSender(), 1000e18);
+            emit DirectChallengeWon(_msgSender(), flag, 1000e18); 
             _directChallengeWon[flag] = true;  
 
             return true; 
@@ -187,15 +171,7 @@ contract token_challenge is AdminRole, TeamRole {
     //TEAM CHALLENGE
     
     function challengeStart(uint256 flag) onlyTeam external {
-        //token_exchange fss_exchange = token_exchange(_exchangeAddress); 
-        //IT_PayCoin payCoin = IT_PayCoin(fss_exchange.payCoin());
-        /*
-        for(uint256 i = 0; i < _teamFlag.length; i++){
-            require(_teamFlag[i] != flag , "Flag already used!");
-        } 
-        */
-
-        //_teamFlag.push(flag); 
+    
         checkFlag(_teamFlag, flag); 
 
         _startTeamChallenge[flag] = now;
@@ -203,49 +179,37 @@ contract token_challenge is AdminRole, TeamRole {
 
         require(_teamAddresses.length == 3, "Challenge can't start until all teams regitered."); 
         for(uint256 i = 0; i < _teamAddresses.length; i++){
-            if(msg.sender == _teamAddresses[i]){
-                _teamChallenger = msg.sender; 
+            if(_msgSender() == _teamAddresses[i]){
+                _teamChallenger = _msgSender(); 
             }
             else{
                 _teamChallenged.push(_teamAddresses[i]); 
             }
         }
 
-        emit TeamChallenge(msg.sender, flag); 
+        emit TeamChallenge(_msgSender(), flag); 
 
-        payCoin.burnFrom(msg.sender, 100e18); 
+        payCoin.burnFrom(_msgSender(), 100e18); 
 
     }
 
-    function winTeamChallenge(uint256 flag) onlyTeam external returns(bool) {
-        //token_exchange fss_exchange = token_exchange(_exchangeAddress); 
-        //IT_PayCoin payCoin = IT_PayCoin(fss_exchange.payCoin());    
+    function winTeamChallenge(uint256 flag) onlyTeam external returns(bool) {    
         bool _flagFound = false; 
 
-        payCoin.burnFrom(msg.sender, 100e18);
-
-        //require(msg.sender == _teamChallenger || msg.sender == _teamChallenged[0] || msg.sender == _teamChallenged[1], "You must be either the challenger or one fo the challenged."); 
-        if(now >= _startTeamChallenge[flag] + 5 minutes){//REMEMBER TO CHANGE BACK TO MINUTES!
+        payCoin.burnFrom(_msgSender(), 100e18);
+ 
+        if(now >= _startTeamChallenge[flag] + 5 minutes){
             require(_teamChallengeWon[flag] == false, "The challenge has already been won."); 
-            /*
-            for(uint256 i = 0; i < _teamFlag.length; i++){
-                //require( _flag[i] == flag , "Couldn't find yuor flag!");
-                if (_teamFlag[i] == flag ){
-                    _flagFound = true; 
-                    break; 
-                }
-            }
-            require(_flagFound, "Couldn't find yuor flag!"); 
-            */
+        
             matchFlag(_teamFlag, flag); 
 
-            if(msg.sender == _teamChallenger){
-                payCoin.mint(msg.sender, 1500e18);
-                emit TeamChallengeWon(msg.sender, flag, 1500e18);
+            if(_msgSender() == _teamChallenger){
+                payCoin.mint(_msgSender(), 1500e18);
+                emit TeamChallengeWon(_msgSender(), flag, 1500e18);
             }
             else{
-                payCoin.mint(msg.sender, 1000e18);
-                emit TeamChallengeWon(msg.sender, flag, 1000e18);
+                payCoin.mint(_msgSender(), 1000e18);
+                emit TeamChallengeWon(_msgSender(), flag, 1000e18);
             }
              
             _teamChallengeWon[flag] = true;  
@@ -274,7 +238,6 @@ contract token_challenge is AdminRole, TeamRole {
         bool _flagFound = false;
 
         for(uint256 i = 0; i < _flags.length; i++){
-                //require( _flag[i] == flag , "Couldn't find yuor flag!");
                 if (_flags[i] == _flag ){
                     _flagFound = true; 
                     break; 
@@ -284,20 +247,14 @@ contract token_challenge is AdminRole, TeamRole {
 
     }
 
-
-
-
-
-
     //EXCHANGE & PAYCOIN ADDRESS
-    /*
     function setExchange(address exchangeAddress) onlyAdmin external {
         fss_exchange = token_exchange(exchangeAddress); 
     }
     
     function setPayCoin(address payCoinAddress) onlyAdmin external {
-        payCoin = IT_PayCoin(payCoinAddress); 
+        payCoin = PayCoin(payCoinAddress); 
     }
-    */
+    
 
 }

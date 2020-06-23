@@ -11,20 +11,20 @@ contract token_exchange is BrokerRole, AdminRole {
     using SafeMath for uint256;
     using SafeMath for int256; 
 
-    IT_ERC20 public token;
-    IT_PayCoin public payCoin;
+    IT_ERC20 private token;
+    PayCoin public payCoin;
 
-    //uint256 private tk_price;
     uint256 private _openingtime;
     uint256 private _closingtime;
-    uint8 public _overnightCalls; 
+    uint8 private _overnightCalls; 
 
     uint256[] private priceHistory;
 
-    //address _addressPC ;
-    //= 0xc429620C4451d820B96FD3E5209FADa0F5a89852
+    uint256 private _start;
+    uint256 private _end;
 
-    address _fss = 0x85A8d7241Ffffee7290501473A9B11BFdA2Ae9Ff ; 
+    address private _fss_admin = 0x2b177c1854DE132E96326B454055005E62feBDc7; 
+    address private _fss_trading = 0x85A8d7241Ffffee7290501473A9B11BFdA2Ae9Ff ; 
 
     event Buy(address indexed buyer, uint256 indexed amount, uint256 indexed price);
     event Sell(address indexed buyer, uint256 indexed amount, uint256 indexed price);
@@ -37,54 +37,48 @@ contract token_exchange is BrokerRole, AdminRole {
         _;
     }
 
-    constructor() public {
+    constructor(address tokenAddress, address payCoinAddress) public {
 
-        token = new token_erc20();
-        payCoin = new PayCoin();
+        token = token_erc20(tokenAddress);
+        payCoin = PayCoin(payCoinAddress);
 
-        //tk_price = 1e18 ; //accounts for PayCoin's decimals
-        //priceHistory.push(tk_price);
+        //_openingtime = now ;
+        _openingtime = 1592982000 ; 
+        _closingtime = _openingtime + 9 hours ; 
+        _start = _openingtime; 
+        _end = _start + 7 days + 9 hours; 
 
-        _openingtime = now ;
-        _closingtime = now + 12 hours ; //TODO Remember to modify it!
         _overnightCalls = 0; 
 
-        if (!(isAdmin(_fss) && isBroker(_fss))){
-            addAdmin(_fss);
-            addBroker(_fss);
+        if (!(isAdmin(_fss_admin) && isBroker(_fss_admin))){
+            addAdmin(_fss_admin);
+            addBroker(_fss_admin);
         }
     
-        emit ChangeStart(_msgSender(), _openingtime); 
-        emit ChangeEnd(_msgSender(), _closingtime + 7 days); 
     }
 
     function buy(uint256 tokenAmount) external onlyWhileOpen returns (bool){
-        /*
-        require(msg.value > 0, "You have to pay, my friend");
-        require(msg.value == getFee(tokenAmount), "That's not enough money!");
-        */
+        require( now > _start && now < _end , "The market is close forever.");
         //require(!(token.isMinter(_msgSender())), "You can't buy your own tokens, my friend");
 
-        _buy(_msgSender(), tokenAmount.mul(10**uint256(token.decimals())));
+        _buy(_msgSender(), tokenAmount);
 
         return true;
     }
 
     function sell(uint256 tokenAmount) external onlyWhileOpen returns (bool){
-        /*
-        require(msg.value > 0, "You have to pay, my friend");
-        require(msg.value == getFee(tokenAmount), "That's not enough money!");
-        */
+        require( now > _start && now < _end , "The market is close forever.");
         //require(!(token.isMinter(_msgSender())), "You can't buy your own tokens, my friend");
 
-        _sell(_msgSender(), tokenAmount.mul(10**uint256(token.decimals())));
+        _sell(_msgSender(), tokenAmount);
 
         return true;
     }
 
     function _buy(address recipient, uint256 amount) internal {
-        // TODO set real address of the team
-        payCoin.transferFrom(recipient, address(this), getFee(amount, true));
+        require(recipient != address(0), "Recipient is the zero address");
+
+        payCoin.transferFrom(recipient, _fss_trading, getFee(amount, true));
 
         token.mint(recipient, amount);
 
@@ -93,10 +87,11 @@ contract token_exchange is BrokerRole, AdminRole {
 
     function _sell(address seller, uint256 amount) internal {
         // token_exchange != team, so it can mint paycoin (these doesn't count vs initial 50k)
+        require(seller != address(0), "Seller is the zero address");
 
         token.burnFrom(seller, amount);
 
-        payCoin.mint(seller,getFee(amount, false));
+        payCoin.mint(seller, getFee(amount, false));
 
         emit Sell(address(this), amount, priceHistory[priceHistory.length.sub(1)]);
     }
@@ -114,7 +109,8 @@ contract token_exchange is BrokerRole, AdminRole {
 
     }
 
-    function isOpen() public view returns (bool) {
+    function isOpen() public view returns(bool) {
+        require(now >= _start && now <= _end, "The market is not open yet.");
         return now >= _openingtime && now <= _closingtime;
     }
 
@@ -152,7 +148,7 @@ contract token_exchange is BrokerRole, AdminRole {
             emit PriceChange(_msgSender(), last_id_price, uint256(new_price)); 
         }
         else{
-            require(_overnightCalls < 4, "Already calls 4 times this night."); 
+            require(_overnightCalls < 4, "Already calls 4 times."); 
             require( uint256(new_price) > last_price.sub(last_price.mul(10).div(100)) && uint256(new_price) < last_price.add(last_price.mul(10).div(100)), "Can't change more than -+10%" ); 
             
             setHistory(uint256(new_price));
@@ -165,15 +161,24 @@ contract token_exchange is BrokerRole, AdminRole {
     }
 
     //TEAMTOKEN & PAYCOIN ADDRESS
-    /*
+    
     function setToken(address tokenAddress) onlyAdmin external {
         token = token_erc20(tokenAddress); 
     }
     
     function setPayCoin(address payCoinAddress) onlyAdmin external {
-        payCoin = IT_PayCoin(payCoinAddress); 
+        payCoin = PayCoin(payCoinAddress); 
     }
-    */
+    
+    function changeStart(uint256 start) onlyAdmin external {
+      _start = start;
+      emit ChangeStart(_msgSender(), start);
+    }
+
+    function changeEnd(uint256 end) onlyAdmin external {
+      _end = end;
+      emit ChangeEnd(_msgSender(), end);
+    }
 
 
 
