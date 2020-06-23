@@ -59,6 +59,7 @@ Indirizzo PayCoin: 0xFBF15fAF47Ce74E0d7714C5b77ACCE8788e4d09a       (test)
 
 Indirizzo Lender: 0x09005644ed55e4238d381C336371DC0068c7a449        (test)
 
+****************************************************************************
 
 Team FSS
 
@@ -67,11 +68,11 @@ Indirizzo Trading: 0x85A8d7241Ffffee7290501473A9B11BFdA2Ae9Ff
 Indirizzo SuperUser: 0x2b177c1854DE132E96326B454055005E62feBDc7
 
 ****************************************************************************
-Indirizzo Exchange: 0xc9aaE2ADa5a5b650b48465B3C21FE584Bb55e18e
+Indirizzo Exchange: 0x99d07b3fA4C2046a43e3911AC5a5bC3B0115b110
 
-Indirizzo Token: 0xD9e40872c3381Fa5f33048846B888ed9c79A7Adf
+Indirizzo Token: 0xFBDE8b1b7F1F513a1a61b63f285348Da22CbfF2f
 
-Indirizzo Challenge: 0x8d3110d701835D5b54808265141F0D599480a2B9
+Indirizzo Challenge: 0xB2A3c4136A79c6BA18A2D23E1bC9F6920956a7E4
 
 Indirizzo Lender: 0x8220F9c12f66F638418Ff63343AF02b8e7E1ecBF
 ****************************************************************************
