@@ -39,15 +39,15 @@ Team CST
 Indirizzo Trading: 0xe6a2234764Bd7a41Da73bd91F9E857819d20b22F
 
 ****************************************************************************
-Indirizzo Exchange: 0xD0f76fA91d1566A480DB81EE5eFb7D2469Ab20F9
+Indirizzo Exchange: 0x4Ca8E6E18F44A85f8A9Ee22bd87A74aef8ba2DaB
 
-Indirizzo Token:    0x2Dc11066315479c1bb929a7700A45eb0Af5F3375
+Indirizzo Token:    0x17e36051d57Aa1eec3281B58247D24603C1D1603
 
-Indirizzo Challenge: 0x33bddaC094400b5Bf06B4AE5df3759a56e23618A 
+Indirizzo Challenge:  0xE3cFc852F933Fabd4126343c203895d4A702407c
 
-Indirizzo PayCoin:  0xBE721E91919d951c6B8F66A14b43083B5A7E6936
+Indirizzo PayCoin:  0x173A464407bFD929e2c99782b57aE6a1CA362823
 
-Indirizzo Lender:   0x9C3e7cd62b1e636dF0ccEA1fd0A766A8ba286199
+Indirizzo Lender:   0x8e552B2238cE0A890Ef32Fc64aF9C7572D5247aF
 ****************************************************************************
 Indirizzo Exchange: 0xCcD93237B92074Fc27FefCAa8C7Df712196C3626      (test)
 

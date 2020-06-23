@@ -126,32 +126,32 @@ contract Exchange is TeamRole {
 			uint256 hour = getHour();
 			require(hour >= 9 && hour < 18, "You can add a price only between 9am and 6pm.");
 			_addPrice(new_price);
-			emit PriceChange(msg.sender, new_price, prices.length);
+			emit PriceChange(msg.sender, prices.length, new_price);
 		}
 		return prices.length;
 	}
 
     function massiveLoadPrice(uint256 price1, uint256 price2, uint256 price3, uint256 price4, uint256 price5, uint256 price6, uint256 price7, uint256 price8, uint256 price9, uint256 price10) external isTeam {
         _addPrice(price1);
-		emit PriceChange(msg.sender, price1, prices.length);
+		emit PriceChange(msg.sender, prices.length, price1);
         _addPrice(price2);
-		emit PriceChange(msg.sender, price2, prices.length);
+		emit PriceChange(msg.sender, prices.length, price2);
         _addPrice(price3);
-		emit PriceChange(msg.sender, price3, prices.length);
+		emit PriceChange(msg.sender, prices.length, price3);
         _addPrice(price4);
-		emit PriceChange(msg.sender, price4, prices.length);
+		emit PriceChange(msg.sender, prices.length, price4);
         _addPrice(price5);
-		emit PriceChange(msg.sender, price5, prices.length);
+		emit PriceChange(msg.sender, prices.length, price5);
         _addPrice(price6);
-		emit PriceChange(msg.sender, price6, prices.length);
+		emit PriceChange(msg.sender, prices.length, price6);
         _addPrice(price7);
-		emit PriceChange(msg.sender, price7, prices.length);
+		emit PriceChange(msg.sender, prices.length, price7);
         _addPrice(price8);
-		emit PriceChange(msg.sender, price8, prices.length);
+		emit PriceChange(msg.sender, prices.length, price8);
         _addPrice(price9);
-		emit PriceChange(msg.sender, price9, prices.length);
+		emit PriceChange(msg.sender, prices.length, price9);
         _addPrice(price10);
-		emit PriceChange(msg.sender, price10, prices.length);
+		emit PriceChange(msg.sender, prices.length, price10);
     }
 
     function isOpen() public view returns(bool){
