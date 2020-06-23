@@ -67,13 +67,13 @@ Indirizzo Trading: 0x85A8d7241Ffffee7290501473A9B11BFdA2Ae9Ff
 Indirizzo SuperUser: 0x2b177c1854DE132E96326B454055005E62feBDc7
 
 ****************************************************************************
-Indirizzo Exchange: 0x609D5595D7B3b8930691A285420Ff24f1C5bD3bF
+Indirizzo Exchange: 0xc9aaE2ADa5a5b650b48465B3C21FE584Bb55e18e
 
-Indirizzo Token: 0xd4943BdC53CF0a24c614D8F9B89CD26d63b7EB25
+Indirizzo Token: 0xD9e40872c3381Fa5f33048846B888ed9c79A7Adf
 
-Indirizzo Challenge: 0x677BC116B1636a81Eb41Df05a0dB848EDD8eBc67
+Indirizzo Challenge: 0x8d3110d701835D5b54808265141F0D599480a2B9
 
-Indirizzo Lender: 0x5011D464F62546D339bD11182cdC792117970403
+Indirizzo Lender: 0x8220F9c12f66F638418Ff63343AF02b8e7E1ecBF
 ****************************************************************************
 
 Indirizzo Exchange: 0xA0E802c3582C59bdD1050E3a38b4D2eaCa2F7790 (test)
