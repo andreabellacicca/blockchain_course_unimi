@@ -452,5 +452,25 @@
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
+   },
+   {
+      "constant": false,
+      "inputs": [
+         {
+            "internalType": "address",
+            "name": "beneficiary",
+            "type": "address"
+         },
+         {
+            "internalType": "uint256",
+            "name": "payAmount",
+            "type": "uint256"
+         }
+      ],
+      "name": "teachSomething",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
    }
 ]
